@@ -14,6 +14,12 @@
 		1482A8F71EBBA291002A0010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1482A8F61EBBA291002A0010 /* Assets.xcassets */; };
 		1482A8FA1EBBA291002A0010 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1482A8F81EBBA291002A0010 /* LaunchScreen.storyboard */; };
 		1482A9051EBBA291002A0010 /* itunesWorkProjectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1482A9041EBBA291002A0010 /* itunesWorkProjectTests.m */; };
+		1482A9111EBBA2FF002A0010 /* IWPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1482A9101EBBA2FF002A0010 /* IWPCell.m */; };
+		1482A9171EBBA662002A0010 /* Masonry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1482A9161EBBA662002A0010 /* Masonry.framework */; };
+		1482A9181EBBA662002A0010 /* Masonry.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1482A9161EBBA662002A0010 /* Masonry.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1482A91C1EBBA79E002A0010 /* IWPSong.m in Sources */ = {isa = PBXBuildFile; fileRef = 1482A91B1EBBA79E002A0010 /* IWPSong.m */; };
+		1482A91F1EBBA7B3002A0010 /* IWPSongList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1482A91E1EBBA7B3002A0010 /* IWPSongList.m */; };
+		1482A9241EBBABA2002A0010 /* IWPNetworkDataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 1482A9231EBBABA2002A0010 /* IWPNetworkDataBase.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +31,20 @@
 			remoteInfo = itunesWorkProject;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1482A9191EBBA662002A0010 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1482A9181EBBA662002A0010 /* Masonry.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1482A8E71EBBA291002A0010 /* itunesWorkProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itunesWorkProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +60,16 @@
 		1482A9001EBBA291002A0010 /* itunesWorkProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = itunesWorkProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1482A9041EBBA291002A0010 /* itunesWorkProjectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = itunesWorkProjectTests.m; sourceTree = "<group>"; };
 		1482A9061EBBA291002A0010 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1482A90F1EBBA2FF002A0010 /* IWPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPCell.h; sourceTree = "<group>"; };
+		1482A9101EBBA2FF002A0010 /* IWPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWPCell.m; sourceTree = "<group>"; };
+		1482A9161EBBA662002A0010 /* Masonry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Masonry.framework; sourceTree = "<group>"; };
+		1482A91A1EBBA79E002A0010 /* IWPSong.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPSong.h; sourceTree = "<group>"; };
+		1482A91B1EBBA79E002A0010 /* IWPSong.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWPSong.m; sourceTree = "<group>"; };
+		1482A91D1EBBA7B3002A0010 /* IWPSongList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPSongList.h; sourceTree = "<group>"; };
+		1482A91E1EBBA7B3002A0010 /* IWPSongList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWPSongList.m; sourceTree = "<group>"; };
+		1482A9211EBBA9D3002A0010 /* IWPDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPDataBase.h; sourceTree = "<group>"; };
+		1482A9221EBBABA2002A0010 /* IWPNetworkDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPNetworkDataBase.h; sourceTree = "<group>"; };
+		1482A9231EBBABA2002A0010 /* IWPNetworkDataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IWPNetworkDataBase.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1482A9171EBBA662002A0010 /* Masonry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +94,7 @@
 		1482A8DE1EBBA291002A0010 = {
 			isa = PBXGroup;
 			children = (
+				1482A9161EBBA662002A0010 /* Masonry.framework */,
 				1482A8E91EBBA291002A0010 /* itunesWorkProject */,
 				1482A9031EBBA291002A0010 /* itunesWorkProjectTests */,
 				1482A8E81EBBA291002A0010 /* Products */,
@@ -81,6 +113,11 @@
 		1482A8E91EBBA291002A0010 /* itunesWorkProject */ = {
 			isa = PBXGroup;
 			children = (
+				1482A9211EBBA9D3002A0010 /* IWPDataBase.h */,
+				1482A9221EBBABA2002A0010 /* IWPNetworkDataBase.h */,
+				1482A9231EBBABA2002A0010 /* IWPNetworkDataBase.m */,
+				1482A9201EBBA8F1002A0010 /* Model */,
+				1482A9151EBBA439002A0010 /* Cell */,
 				1482A8ED1EBBA291002A0010 /* AppDelegate.h */,
 				1482A8EE1EBBA291002A0010 /* AppDelegate.m */,
 				1482A8F01EBBA291002A0010 /* ViewController.h */,
@@ -111,6 +148,26 @@
 			path = itunesWorkProjectTests;
 			sourceTree = "<group>";
 		};
+		1482A9151EBBA439002A0010 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1482A90F1EBBA2FF002A0010 /* IWPCell.h */,
+				1482A9101EBBA2FF002A0010 /* IWPCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		1482A9201EBBA8F1002A0010 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1482A91A1EBBA79E002A0010 /* IWPSong.h */,
+				1482A91B1EBBA79E002A0010 /* IWPSong.m */,
+				1482A91D1EBBA7B3002A0010 /* IWPSongList.h */,
+				1482A91E1EBBA7B3002A0010 /* IWPSongList.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,6 +178,7 @@
 				1482A8E31EBBA291002A0010 /* Sources */,
 				1482A8E41EBBA291002A0010 /* Frameworks */,
 				1482A8E51EBBA291002A0010 /* Resources */,
+				1482A9191EBBA662002A0010 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,9 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1482A9111EBBA2FF002A0010 /* IWPCell.m in Sources */,
+				1482A9241EBBABA2002A0010 /* IWPNetworkDataBase.m in Sources */,
+				1482A91F1EBBA7B3002A0010 /* IWPSongList.m in Sources */,
 				1482A8F21EBBA291002A0010 /* ViewController.m in Sources */,
 				1482A8EF1EBBA291002A0010 /* AppDelegate.m in Sources */,
 				1482A8EC1EBBA291002A0010 /* main.m in Sources */,
+				1482A91C1EBBA79E002A0010 /* IWPSong.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +360,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -341,7 +403,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,6 +415,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = itunesWorkProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.devTeam.itunesWorkProject;
@@ -364,6 +430,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = itunesWorkProject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.devTeam.itunesWorkProject;
@@ -414,6 +484,7 @@
 				1482A90B1EBBA291002A0010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1482A90C1EBBA291002A0010 /* Build configuration list for PBXNativeTarget "itunesWorkProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +493,7 @@
 				1482A90E1EBBA291002A0010 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
