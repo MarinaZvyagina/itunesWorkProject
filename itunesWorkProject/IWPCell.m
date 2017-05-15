@@ -38,11 +38,8 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
                        dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                                      ^{
                                          imageData = [NSData dataWithContentsOfURL:imageURL];
-                                         
-                                         
                                          dispatch_sync(dispatch_get_main_queue(), ^{
                                              self.songImage.image = [UIImage imageWithData:imageData];
-                                           //  self.so.image = [UIImage imageWithData:imageData];
                                          });
                                      });
                    });

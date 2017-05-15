@@ -15,9 +15,10 @@
     if (artist == nil )
         artist = @"";
     __block NSMutableArray *resultSongs = [NSMutableArray new];
-    NSString * stringWithoutArtist = @"https://itunes.apple.com/search?term=jack+johnson";
+    NSString * stringWithoutArtist = @"https://itunes.apple.com/search?term=";
+    NSString * stringWithArtist = [stringWithoutArtist stringByAppendingString:artist];
 
-    NSURLRequest *nsurlRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:stringWithoutArtist]];
+    NSURLRequest *nsurlRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:stringWithArtist]];
     
     __block NSData *responseData = [NSURLConnection sendSynchronousRequest:nsurlRequest returningResponse:nil error:nil];
     
@@ -61,8 +62,6 @@
         [resultSongs addObject:createSong(name, artist, album, urlForPicture, price)];
     }
 
-    
-    
     return [[IWPSongList alloc] initWithArray:resultSongs];
 }
 

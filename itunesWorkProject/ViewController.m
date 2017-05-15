@@ -41,18 +41,16 @@ static IWPSongList * staticContacts;
     [self.view addSubview:self.tableView];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
     self.searchController = [UISearchController new];
+    self.searchController = [[UISearchController alloc] initWithSearchResultsController:nil];
     self.searchController.searchResultsUpdater = self;
-    self.searchController.dimsBackgroundDuringPresentation = false;
-    
+    self.searchController.dimsBackgroundDuringPresentation = NO;
+    self.searchController.searchBar.delegate = self;
+    self.searchController.searchBar.placeholder = @"Search Here";
     self.tableView.tableHeaderView = self.searchController.searchBar;
-    
-   // CGFloat * height = self.searchController.searchBar.frame.size.height;
-    self.tableView.contentOffset = CGPointMake(0, self.searchController.searchBar.frame.size.height);     
-    
+    self.definesPresentationContext = YES;
+    [self.searchController.searchBar sizeToFit];
 
-    
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view.mas_top).with.offset(30);
         make.left.equalTo(self.view.mas_left);
@@ -62,8 +60,6 @@ static IWPSongList * staticContacts;
     
     self.songManager = [IWPNetworkDataBase new];
     NSString * text = self.searchController.searchBar.text;
-
-    
     self.songs=[self.songManager getSongs:text withUpdate:self.songs];
     staticContacts = self.songs;
     [self.tableView registerClass:[IWPCell class] forCellReuseIdentifier:IWPCellIdentifier];
@@ -82,20 +78,15 @@ static IWPSongList * staticContacts;
     [(IWPCell *)cell addArtist:song];
     return cell;
 }
-/*
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    IWPSong * song = [self.songs objectAtIndexedSubscript:indexPath.row];
 
-}
-*/
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50;
 }
-
-/*
-- (void)updateSearchResultsForSearchController:(UISearchController *)searchController {
-    NSString * text = self.searchController.searchBar.text;
-    [self.songManager getSongs:text withUpdate:self.songs];
-}*/
+- (void)updateSearchResultsForSearchController:(UISearchController *)searchController
+{
+    NSString *searchString = searchController.searchBar.text;
+    self.songs=[self.songManager getSongs:searchString withUpdate:self.songs];
+    staticContacts = self.songs;
+    [self.tableView reloadData];
+}
 @end
