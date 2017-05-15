@@ -16,6 +16,7 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
 @property (nonatomic, strong) UILabel * name;
 @property (nonatomic, strong) UILabel * artist;
 @property (nonatomic, strong) UIImageView * songImage;
+@property (nonatomic, strong) UILabel * price;
 
 @end
 
@@ -49,10 +50,12 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
     self.songImage = [UIImageView new];
     self.name = [UILabel new];
     self.artist = [UILabel new];
+    self.price = [UILabel new];
     
     [self addSubview:self.name];
     [self addSubview:self.artist];
     [self addSubview:self.songImage];
+    [self addSubview:self.price];
     
     [self.songImage mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).with.offset(5);
@@ -67,6 +70,7 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
     
     [self.name setTextAlignment:NSTextAlignmentCenter];
     [self.artist setTextAlignment:NSTextAlignmentCenter];
+    [self.price setTextAlignment:NSTextAlignmentCenter];
     
     [self.name mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.songImage.mas_right).with.offset(10);
@@ -80,6 +84,14 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
         make.left.equalTo(self.name.mas_right);
         make.bottom.equalTo(self.mas_bottom);
         make.width.equalTo(self.name.mas_width);
+        make.top.equalTo(self.mas_top);
+    }];
+    
+    [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.artist.mas_right);
+        make.bottom.equalTo(self.mas_bottom);
+        make.width.equalTo(@50);
+        make.top.equalTo(self.mas_top);
         make.right.equalTo(self.mas_right).with.offset(-10);
     }];
 }
@@ -87,6 +99,7 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
 - (void)addArtist:(IWPSong *)song {
     self.name.text = song.trackName;
     self.artist.text = song.artist;
+    self.price.text = song.price.description; //substringToIndex:3];
     
     NSString * initUrl = song.urlForPicture ? song.urlForPicture : @"https://lh3.googleusercontent.com/-NmcPm_QhFzw/AAAAAAAAAAI/AAAAAAAAAAA/AHalGho6R0sfDXYGc7TOb35Svg_uk5h6Ug/mo/photo.jpg?sz=46";
     [self loadImage:initUrl];
