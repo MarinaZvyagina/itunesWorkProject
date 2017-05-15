@@ -31,6 +31,7 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
 }
 
 -(void) loadImage: (NSString *) url {
+    __weak typeof(self) weakSelf = self;
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                    ^{
                        NSURL *imageURL = [NSURL URLWithString:url];
@@ -40,7 +41,10 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
                                      ^{
                                          imageData = [NSData dataWithContentsOfURL:imageURL];
                                          dispatch_sync(dispatch_get_main_queue(), ^{
-                                             self.songImage.image = [UIImage imageWithData:imageData];
+                                             __strong typeof(self) strongSelf = weakSelf;
+                                             if (strongSelf) {
+                                                 strongSelf.songImage.image = [UIImage imageWithData:imageData];
+                                             }
                                          });
                                      });
                    });
@@ -99,7 +103,7 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
 - (void)addArtist:(IWPSong *)song {
     self.name.text = song.trackName;
     self.artist.text = song.artist;
-    self.price.text = song.price.description; //substringToIndex:3];
+    self.price.text = song.price.description;
     
     NSString * initUrl = song.urlForPicture ? song.urlForPicture : @"https://lh3.googleusercontent.com/-NmcPm_QhFzw/AAAAAAAAAAI/AAAAAAAAAAA/AHalGho6R0sfDXYGc7TOb35Svg_uk5h6Ug/mo/photo.jpg?sz=46";
     [self loadImage:initUrl];
