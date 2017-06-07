@@ -13,8 +13,9 @@
 @implementation IWPNetworkDataBase
 
 -(NSString *)addPlusBetweenWords: (NSString *)artist {
-    if (artist == nil )
+    if (artist == nil ) {
         artist = @"";
+    }
     
     NSArray <NSString *> *terms = [NSArray new];
     terms = [artist componentsSeparatedByString:@" "];
@@ -49,7 +50,6 @@
                     [viewManager reloadViewWithNewSongs:songs];
                 }];
     [downloadTask resume];
-    
 }
 
 -(NSArray *)getArrayFromData:(NSData *)responseData {

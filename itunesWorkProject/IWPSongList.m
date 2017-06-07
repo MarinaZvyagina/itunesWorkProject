@@ -14,7 +14,7 @@
 - (instancetype)initWithArray:(NSArray< IWPSong *> *)songs {
     self = [super init];
     if (self) {
-        _songs = songs;
+        self.songs = songs;
     }
     return self;
 }
