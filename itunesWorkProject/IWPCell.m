@@ -50,53 +50,56 @@ NSString *const IWPCellIdentifier = @"IWPCellIdentifier";
                    });
 }
 
+-(void) addAllSubviews {
+    [self addSubview:self.name];
+    [self addSubview:self.artist];
+    [self addSubview:self.songImage];
+    [self addSubview:self.price];
+}
+
+-(void)setTextAlignmentForAllFields {
+    [self.name setTextAlignment:NSTextAlignmentCenter];
+    [self.artist setTextAlignment:NSTextAlignmentCenter];
+    [self.price setTextAlignment:NSTextAlignmentCenter];
+}
+
 -(void)createSubviews {
     self.songImage = [UIImageView new];
     self.name = [UILabel new];
     self.artist = [UILabel new];
     self.price = [UILabel new];
-    
-    [self addSubview:self.name];
-    [self addSubview:self.artist];
-    [self addSubview:self.songImage];
-    [self addSubview:self.price];
-    
+    [self addAllSubviews];
+    [self makeConstrantsForView:self.songImage WithLeft:self.mas_left Top:self.mas_top Right:self.name.mas_left AndBottom:self.mas_bottom];
     [self.songImage mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.mas_left).with.offset(5);
         make.top.equalTo(self.mas_top).with.offset(3);
-        make.width.equalTo(@40);
+        make.width.equalTo(@45);
         make.bottom.equalTo(self.mas_bottom).with.offset(-3);
-        make.height.equalTo(@40);
+        make.height.equalTo(@45);
     }];
     
     self.songImage.layer.cornerRadius = self.frame.size.height / 2;
     self.songImage.clipsToBounds = YES;
     
-    [self.name setTextAlignment:NSTextAlignmentCenter];
-    [self.artist setTextAlignment:NSTextAlignmentCenter];
-    [self.price setTextAlignment:NSTextAlignmentCenter];
+    [self setTextAlignmentForAllFields];
     
+    [self makeConstrantsForView:self.name WithLeft:self.songImage.mas_right Top:self.mas_top Right:self.artist.mas_left AndBottom:self.mas_bottom];
     [self.name mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.songImage.mas_right).with.offset(10);
-        make.top.equalTo(self.mas_top);
-        make.right.equalTo(self.artist.mas_left);
-        make.bottom.equalTo(self.mas_bottom);
         make.width.greaterThanOrEqualTo(@100).width.priorityHigh();
     }];
-    
-    [self.artist mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.name.mas_right);
-        make.bottom.equalTo(self.mas_bottom);
-        make.width.equalTo(self.name.mas_width);
-        make.top.equalTo(self.mas_top);
-    }];
-    
+    [self makeConstrantsForView:self.artist WithLeft:self.name.mas_right Top:self.mas_top Right:self.price.mas_left AndBottom:self.mas_bottom];
+    [self makeConstrantsForView:self.price WithLeft:self.artist.mas_right Top:self.mas_top Right:self.mas_right AndBottom:self.mas_bottom];
     [self.price mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.artist.mas_right);
-        make.bottom.equalTo(self.mas_bottom);
         make.width.equalTo(@50);
-        make.top.equalTo(self.mas_top);
         make.right.equalTo(self.mas_right).with.offset(-10);
+    }];
+}
+
+-(void)makeConstrantsForView:(UIView *)view WithLeft: (MASConstraint *)left Top:(MASConstraint *)top Right:(MASConstraint *)right AndBottom:(MASConstraint *)bottom {
+    [view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(left);
+        make.top.equalTo(top);
+        make.right.equalTo(right);
+        make.bottom.equalTo(bottom);
     }];
 }
 

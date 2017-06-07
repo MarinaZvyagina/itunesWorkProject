@@ -91,6 +91,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		14458CA01EE887B200BC2A4D /* Song */ = {
+			isa = PBXGroup;
+			children = (
+				1482A91A1EBBA79E002A0010 /* IWPSong.h */,
+				1482A91B1EBBA79E002A0010 /* IWPSong.m */,
+			);
+			name = Song;
+			sourceTree = "<group>";
+		};
+		14458CA11EE887BB00BC2A4D /* Song List */ = {
+			isa = PBXGroup;
+			children = (
+				1482A91D1EBBA7B3002A0010 /* IWPSongList.h */,
+				1482A91E1EBBA7B3002A0010 /* IWPSongList.m */,
+			);
+			name = "Song List";
+			sourceTree = "<group>";
+		};
 		1482A8DE1EBBA291002A0010 = {
 			isa = PBXGroup;
 			children = (
@@ -160,10 +178,8 @@
 		1482A9201EBBA8F1002A0010 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1482A91A1EBBA79E002A0010 /* IWPSong.h */,
-				1482A91B1EBBA79E002A0010 /* IWPSong.m */,
-				1482A91D1EBBA7B3002A0010 /* IWPSongList.h */,
-				1482A91E1EBBA7B3002A0010 /* IWPSongList.m */,
+				14458CA01EE887B200BC2A4D /* Song */,
+				14458CA11EE887BB00BC2A4D /* Song List */,
 			);
 			name = Model;
 			sourceTree = "<group>";
