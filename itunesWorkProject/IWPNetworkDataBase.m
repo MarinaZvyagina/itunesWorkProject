@@ -7,6 +7,7 @@
 //
 
 #import "IWPNetworkDataBase.h"
+#import "IWPViewManager.h"
 #import "IWPSongList.h"
 
 @implementation IWPNetworkDataBase
@@ -31,25 +32,24 @@
     return artistString;
 }
 
--(IWPSongList *)getSongs: (NSString *)artist withUpdate: (IWPSongList *)songs  {
+-(void)getSongs: (NSString *)artist withManager: (id<IWPViewManager>)viewManager  {
     NSString * artistString = [self addPlusBetweenWords:artist];
-
     NSString * stringWithoutArtist = @"https://itunes.apple.com/search?term=";
     NSString * stringWithArtist = [stringWithoutArtist stringByAppendingString:artistString];
     NSURLRequest *nsurlRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:stringWithArtist]];
     __block NSData *responseData = [NSURLConnection sendSynchronousRequest:nsurlRequest returningResponse:nil error:nil];
     NSURLSessionConfiguration * defaultConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultConfiguration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
-    [[session dataTaskWithRequest:nsurlRequest
+    NSURLSessionDataTask *downloadTask = [session dataTaskWithRequest:nsurlRequest
                 completionHandler:^(NSData *data,
                                     NSURLResponse *response,
                                     NSError *error) {
                     responseData = data;
-                }] resume];
-    if ( responseData == nil ) {
-        return [IWPSongList new];
-    }
-    return [[IWPSongList alloc] initWithArray:[self getArrayFromData:responseData]];
+                    IWPSongList * songs = [[IWPSongList alloc] initWithArray:[self getArrayFromData:responseData]];
+                    [viewManager reloadViewWithNewSongs:songs];
+                }];
+    [downloadTask resume];
+    
 }
 
 -(NSArray *)getArrayFromData:(NSData *)responseData {
@@ -81,7 +81,6 @@
         
         [resultSongs addObject:createSong(name, artist, album, urlForPicture, price)];
     }
-    
     return (NSArray *)resultSongs;
 }
 

@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class IWPSongList;
+@protocol IWPViewManager;
+
 @protocol IWPDataBase <NSObject>
-
-
--(IWPSongList *)getSongs: (NSString *)artist withUpdate: (IWPSongList *)songs;
+-(void)getSongs: (NSString *)artist withManager: (id<IWPViewManager>)viewManager;
 @end

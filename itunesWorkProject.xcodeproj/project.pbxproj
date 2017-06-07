@@ -47,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		14458CA31EE8901100BC2A4D /* IWPViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IWPViewManager.h; sourceTree = "<group>"; };
 		1482A8E71EBBA291002A0010 /* itunesWorkProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itunesWorkProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1482A8EB1EBBA291002A0010 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1482A8ED1EBBA291002A0010 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -109,6 +110,16 @@
 			name = "Song List";
 			sourceTree = "<group>";
 		};
+		14458CA21EE88ED000BC2A4D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				1482A9211EBBA9D3002A0010 /* IWPDataBase.h */,
+				1482A9221EBBABA2002A0010 /* IWPNetworkDataBase.h */,
+				1482A9231EBBABA2002A0010 /* IWPNetworkDataBase.m */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
 		1482A8DE1EBBA291002A0010 = {
 			isa = PBXGroup;
 			children = (
@@ -131,13 +142,12 @@
 		1482A8E91EBBA291002A0010 /* itunesWorkProject */ = {
 			isa = PBXGroup;
 			children = (
-				1482A9211EBBA9D3002A0010 /* IWPDataBase.h */,
-				1482A9221EBBABA2002A0010 /* IWPNetworkDataBase.h */,
-				1482A9231EBBABA2002A0010 /* IWPNetworkDataBase.m */,
+				14458CA21EE88ED000BC2A4D /* Data */,
 				1482A9201EBBA8F1002A0010 /* Model */,
 				1482A9151EBBA439002A0010 /* Cell */,
 				1482A8ED1EBBA291002A0010 /* AppDelegate.h */,
 				1482A8EE1EBBA291002A0010 /* AppDelegate.m */,
+				14458CA31EE8901100BC2A4D /* IWPViewManager.h */,
 				1482A8F01EBBA291002A0010 /* ViewController.h */,
 				1482A8F11EBBA291002A0010 /* ViewController.m */,
 				1482A8F31EBBA291002A0010 /* Main.storyboard */,

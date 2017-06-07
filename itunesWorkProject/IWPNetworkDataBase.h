@@ -11,7 +11,5 @@
 
 
 @interface IWPNetworkDataBase : NSObject<IWPDataBase>
-
--(IWPSongList *)getSongs: (NSString *)artist withUpdate: (IWPSongList *)songs ;
-
+-(void)getSongs: (NSString *)artist withManager: (id<IWPViewManager>)viewManager;
 @end

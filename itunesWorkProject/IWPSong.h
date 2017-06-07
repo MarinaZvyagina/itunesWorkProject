@@ -16,6 +16,4 @@
 @property (nonatomic, strong) NSString * urlForPicture;
 @property (nonatomic, strong) NSString * price;
 
-
-
 @end
