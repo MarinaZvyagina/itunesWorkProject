@@ -33,7 +33,7 @@
 
 -(IWPSongList *)getSongs: (NSString *)artist withUpdate: (IWPSongList *)songs  {
     NSString * artistString = [self addPlusBetweenWords:artist];
-    __block NSMutableArray *resultSongs = [NSMutableArray new];
+
     NSString * stringWithoutArtist = @"https://itunes.apple.com/search?term=";
     NSString * stringWithArtist = [stringWithoutArtist stringByAppendingString:artistString];
     NSURLRequest *nsurlRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:stringWithArtist]];
@@ -46,12 +46,17 @@
                                     NSError *error) {
                     responseData = data;
                 }] resume];
-  
     if ( responseData == nil ) {
         return [IWPSongList new];
     }
+    return [[IWPSongList alloc] initWithArray:[self getArrayFromData:responseData]];
+}
+
+-(NSArray *)getArrayFromData:(NSData *)responseData {
     NSDictionary * JSONObject = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-     
+    NSMutableArray *resultSongs = [NSMutableArray new];
+    NSDictionary * songs = [JSONObject objectForKey:@"results"];
+    
     IWPSong* (^createSong)(NSString *, NSString *, NSString *, NSString *, NSString *);
     createSong = ^IWPSong*(NSString *trackName,
                            NSString * artist,
@@ -67,20 +72,17 @@
         return song;
     };
     
-    NSDictionary * songss = [JSONObject objectForKey:@"results"];
-    
-    for (NSDictionary * object in songss ) {
-        NSString *name = [object objectForKey:@"trackName"];
-        NSString *artist = [object objectForKey:@"artistName"];
-        NSString *album = [object objectForKey:@"collectionName"];
-        NSString *urlForPicture = [object objectForKey:@"artworkUrl60"];
-        NSString *price = [object objectForKey:@"trackPrice"];
+    for (NSDictionary * song in songs ) {
+        NSString *name = [song objectForKey:@"trackName"];
+        NSString *artist = [song objectForKey:@"artistName"];
+        NSString *album = [song objectForKey:@"collectionName"];
+        NSString *urlForPicture = [song objectForKey:@"artworkUrl60"];
+        NSString *price = [song objectForKey:@"trackPrice"];
         
         [resultSongs addObject:createSong(name, artist, album, urlForPicture, price)];
     }
-
-    return [[IWPSongList alloc] initWithArray:resultSongs];
+    
+    return (NSArray *)resultSongs;
 }
-
 
 @end
