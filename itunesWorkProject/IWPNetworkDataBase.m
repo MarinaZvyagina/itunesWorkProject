@@ -38,15 +38,13 @@
     NSString * stringWithoutArtist = @"https://itunes.apple.com/search?term=";
     NSString * stringWithArtist = [stringWithoutArtist stringByAppendingString:artistString];
     NSURLRequest *nsurlRequest=[NSURLRequest requestWithURL:[NSURL URLWithString:stringWithArtist]];
-    __block NSData *responseData = [NSURLConnection sendSynchronousRequest:nsurlRequest returningResponse:nil error:nil];
     NSURLSessionConfiguration * defaultConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:defaultConfiguration delegate:self delegateQueue:[NSOperationQueue mainQueue]];
     NSURLSessionDataTask *downloadTask = [session dataTaskWithRequest:nsurlRequest
                 completionHandler:^(NSData *data,
                                     NSURLResponse *response,
                                     NSError *error) {
-                    responseData = data;
-                    IWPSongList * songs = [[IWPSongList alloc] initWithArray:[self getArrayFromData:responseData]];
+                    IWPSongList * songs = [[IWPSongList alloc] initWithArray:[self getArrayFromData:data]];
                     [viewManager reloadViewWithNewSongs:songs];
                 }];
     [downloadTask resume];
